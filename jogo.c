@@ -32,3 +32,16 @@ void gerarCone(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
         }
     }
 }
+
+// Gera a matriz em forma de cruz
+void gerarCruz(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
+    for (int i = 0; i < TAM_HABILIDADE; i++) {
+        for (int j = 0; j < TAM_HABILIDADE; j++) {
+            if (i == TAM_HABILIDADE / 2 || j == TAM_HABILIDADE / 2) {
+                matriz[i][j] = 1;
+            } else {
+                matriz[i][j] = 0;
+            }
+        }
+    }
+}
