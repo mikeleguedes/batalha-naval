@@ -2,6 +2,7 @@
 #include <string.h>
 
 #define TAM_TABULEIRO 10
+#define TAM_HABILIDADE 5
 
 // Função para inicializar o tabuleiro com água (0)
 void inicializarTabuleiro(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO]) {
@@ -16,4 +17,18 @@ void inicializarTabuleiro(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO]) {
     tabuleiro[2][4] = 3;
     tabuleiro[5][5] = 3;
     tabuleiro[7][7] = 3;
+}
+
+// Gera matriz em forma de cone
+void gerarCone(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
+    for (int i = 0; i < TAM_HABILIDADE; i++) {
+        for (int j = 0; j < TAM_HABILIDADE; j++) {
+            // Cone com base larga e topo estreito
+            if (j >= (TAM_HABILIDADE - 1) / 2 - i && j <= (TAM_HABILIDADE - 1) / 2 + i) {
+                matriz[i][j] = 1;
+            } else {
+                matriz[i][j] = 0;
+            }
+        }
+    }
 }
