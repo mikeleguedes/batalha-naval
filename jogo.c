@@ -81,3 +81,49 @@ void aplicarHabilidade(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO], int habilida
         }
     }
 }
+
+// Imprime o tabuleiro com legenda
+void exibirTabuleiro(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO]) {
+    printf("\n=== TABULEIRO ===\n\n");
+    for (int i = 0; i < TAM_TABULEIRO; i++) {
+        for (int j = 0; j < TAM_TABULEIRO; j++) {
+            switch (tabuleiro[i][j]) {
+                case 0:
+                    printf("~ "); // água
+                    break;
+                case 3:
+                    printf("N "); // navio
+                    break;
+                case 5:
+                    printf("* "); // habilidade
+                    break;
+                default:
+                    printf("? ");
+            }
+        }
+        printf("\n");
+    }
+    printf("\nLegenda: ~ Água | N Navio | * Área Afetada\n");
+}
+
+int main() {
+    int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO];
+    int cone[TAM_HABILIDADE][TAM_HABILIDADE];
+    int cruz[TAM_HABILIDADE][TAM_HABILIDADE];
+    int octaedro[TAM_HABILIDADE][TAM_HABILIDADE];
+
+    inicializarTabuleiro(tabuleiro);
+
+    gerarCone(cone);
+    gerarCruz(cruz);
+    gerarOctaedro(octaedro);
+
+    // Aplica habilidades em posições fixas
+    aplicarHabilidade(tabuleiro, cone, 2, 3);       // cone no topo
+    aplicarHabilidade(tabuleiro, cruz, 5, 5);       // cruz no centro
+    aplicarHabilidade(tabuleiro, octaedro, 7, 7);   // octaedro no canto inferior
+
+    exibirTabuleiro(tabuleiro);
+
+    return 0;
+}
