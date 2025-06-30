@@ -60,3 +60,24 @@ void gerarOctaedro(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
         }
     }
 }
+
+
+// Aplica uma habilidade no tabuleiro com ponto de origem
+void aplicarHabilidade(int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO], int habilidade[TAM_HABILIDADE][TAM_HABILIDADE], int origemX, int origemY) {
+    int offset = TAM_HABILIDADE / 2;
+
+    for (int i = 0; i < TAM_HABILIDADE; i++) {
+        for (int j = 0; j < TAM_HABILIDADE; j++) {
+            int tabX = origemX + i - offset;
+            int tabY = origemY + j - offset;
+
+            // Garante que a sobreposição fique dentro dos limites do tabuleiro
+            if (tabX >= 0 && tabX < TAM_TABULEIRO && tabY >= 0 && tabY < TAM_TABULEIRO) {
+                if (habilidade[i][j] == 1) {
+                    // Marca como área afetada pela habilidade
+                    tabuleiro[tabX][tabY] = 5;
+                }
+            }
+        }
+    }
+}
