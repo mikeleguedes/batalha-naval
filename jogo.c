@@ -45,3 +45,18 @@ void gerarCruz(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
         }
     }
 }
+
+
+// Gera a matriz em forma de octaedro
+void gerarOctaedro(int matriz[TAM_HABILIDADE][TAM_HABILIDADE]) {
+    int centro = TAM_HABILIDADE / 2;
+    for (int i = 0; i < TAM_HABILIDADE; i++) {
+        for (int j = 0; j < TAM_HABILIDADE; j++) {
+            if (abs(i - centro) + abs(j - centro) <= centro) {
+                matriz[i][j] = 1;
+            } else {
+                matriz[i][j] = 0;
+            }
+        }
+    }
+}
